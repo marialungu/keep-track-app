@@ -1,0 +1,52 @@
+server:
+  port: 8500
+  tomcat:
+    compression: on
+    compressableMimeTypes: application/json,application/xml,application/javascript,text/html,text/xml,text/plain
+spring:
+  application:
+    name: keep-track-app
+  profiles:
+    active: dev
+  spring:
+    datasource:
+      max-active: 10
+      max-idle: 2
+      min-idle: 2
+  jpa:
+    generate-ddl: false
+---
+spring:
+  profiles: h2
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        cache:
+        use_second_level_cache: false
+        hbm2ddl.auto: create
+    hibernate:
+      ddl-auto: create
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:file:~/keep-track/db/keep-track-db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: admin
+    password:
+
+---
+spring:
+  profiles: dev
+spring.profiles.include: h2,log-dev
+---
+spring:
+  profiles: test
+spring.profiles.include: h2,log-dev
+---
+spring:
+  profiles: log-dev
+logging.level.com.zooplus: DEBUG
+logging.level.org.hibernate.SQL: DEBUG
+logging.level.com.zaxxer.hikari: DEBUG
+logging.path: logs/
