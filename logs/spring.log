@@ -1,0 +1,75 @@
+2017-05-25 21:58:59.979  INFO 13972 --- [restartedMain] c.k.r.a.k.KeepTrackApiApplication        : Starting KeepTrackApiApplication on Maria with PID 13972 (C:\Work\Keep-track\target\classes started by Ria in C:\Work\Keep-track)
+2017-05-25 21:58:59.980  INFO 13972 --- [restartedMain] c.k.r.a.k.KeepTrackApiApplication        : The following profiles are active: h2,log-dev,dev
+2017-05-25 21:59:00.080  INFO 13972 --- [restartedMain] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4b16bea2: startup date [Thu May 25 21:59:00 EEST 2017]; root of context hierarchy
+2017-05-25 21:59:02.406  INFO 13972 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8500 (http)
+2017-05-25 21:59:02.427  INFO 13972 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-05-25 21:59:02.429  INFO 13972 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.14
+2017-05-25 21:59:02.577  INFO 13972 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-05-25 21:59:02.577  INFO 13972 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2523 ms
+2017-05-25 21:59:02.782  INFO 13972 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-05-25 21:59:02.785  INFO 13972 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'webServlet' to [/h2-console/*]
+2017-05-25 21:59:02.789  INFO 13972 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-05-25 21:59:02.790  INFO 13972 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-05-25 21:59:02.794  INFO 13972 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-05-25 21:59:02.794  INFO 13972 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-05-25 21:59:03.383  INFO 13972 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-05-25 21:59:03.408  INFO 13972 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-05-25 21:59:03.519  INFO 13972 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.0.12.Final}
+2017-05-25 21:59:03.521  INFO 13972 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2017-05-25 21:59:03.523  INFO 13972 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2017-05-25 21:59:03.584  INFO 13972 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2017-05-25 21:59:03.798  INFO 13972 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-05-25 21:59:04.002  INFO 13972 --- [restartedMain] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000227: Running hbm2ddl schema export
+2017-05-25 21:59:04.007  INFO 13972 --- [restartedMain] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000230: Schema export complete
+2017-05-25 21:59:04.036  INFO 13972 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-05-25 21:59:04.460  INFO 13972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@4b16bea2: startup date [Thu May 25 21:59:00 EEST 2017]; root of context hierarchy
+2017-05-25 21:59:04.561  INFO 13972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-05-25 21:59:04.563  INFO 13972 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-05-25 21:59:04.595  INFO 13972 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-05-25 21:59:04.601  INFO 13972 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-05-25 21:59:04.659  INFO 13972 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-05-25 21:59:05.002  INFO 13972 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2017-05-25 21:59:05.067  INFO 13972 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-05-25 21:59:05.164  INFO 13972 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8500 (http)
+2017-05-25 21:59:05.174  INFO 13972 --- [restartedMain] c.k.r.a.k.KeepTrackApiApplication        : Started KeepTrackApiApplication in 5.805 seconds (JVM running for 6.526)
+2017-05-25 22:01:44.970  INFO 1488 --- [restartedMain] c.k.r.a.k.KeepTrackApiApplication        : Starting KeepTrackApiApplication on Maria with PID 1488 (C:\Work\Keep-track\target\classes started by Ria in C:\Work\Keep-track)
+2017-05-25 22:01:44.971  INFO 1488 --- [restartedMain] c.k.r.a.k.KeepTrackApiApplication        : The following profiles are active: h2,log-dev,dev
+2017-05-25 22:01:45.022  INFO 1488 --- [restartedMain] ationConfigEmbeddedWebApplicationContext : Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@563792d7: startup date [Thu May 25 22:01:45 EEST 2017]; root of context hierarchy
+2017-05-25 22:01:46.672  INFO 1488 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat initialized with port(s): 8500 (http)
+2017-05-25 22:01:46.685  INFO 1488 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service Tomcat
+2017-05-25 22:01:46.686  INFO 1488 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.14
+2017-05-25 22:01:46.762  INFO 1488 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2017-05-25 22:01:46.762  INFO 1488 --- [localhost-startStop-1] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1743 ms
+2017-05-25 22:01:46.915  INFO 1488 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'dispatcherServlet' to [/]
+2017-05-25 22:01:46.916  INFO 1488 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Mapping servlet: 'webServlet' to [/h2-console/*]
+2017-05-25 22:01:46.919  INFO 1488 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2017-05-25 22:01:46.920  INFO 1488 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2017-05-25 22:01:46.920  INFO 1488 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2017-05-25 22:01:46.921  INFO 1488 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2017-05-25 22:01:47.273  INFO 1488 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2017-05-25 22:01:47.283  INFO 1488 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2017-05-25 22:01:47.334  INFO 1488 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate Core {5.0.12.Final}
+2017-05-25 22:01:47.335  INFO 1488 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2017-05-25 22:01:47.336  INFO 1488 --- [restartedMain] org.hibernate.cfg.Environment            : HHH000021: Bytecode provider name : javassist
+2017-05-25 22:01:47.367  INFO 1488 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2017-05-25 22:01:47.435  INFO 1488 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2017-05-25 22:01:47.622  INFO 1488 --- [restartedMain] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000227: Running hbm2ddl schema export
+2017-05-25 22:01:47.626  INFO 1488 --- [restartedMain] org.hibernate.tool.hbm2ddl.SchemaExport  : HHH000230: Schema export complete
+2017-05-25 22:01:47.640  INFO 1488 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2017-05-25 22:01:47.998  INFO 1488 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@563792d7: startup date [Thu May 25 22:01:45 EEST 2017]; root of context hierarchy
+2017-05-25 22:01:48.056  INFO 1488 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error]}" onto public org.springframework.http.ResponseEntity<java.util.Map<java.lang.String, java.lang.Object>> org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2017-05-25 22:01:48.056  INFO 1488 --- [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/error],produces=[text/html]}" onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2017-05-25 22:01:48.085  INFO 1488 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-05-25 22:01:48.085  INFO 1488 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-05-25 22:01:48.122  INFO 1488 --- [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2017-05-25 22:01:48.373  INFO 1488 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2017-05-25 22:01:48.436  INFO 1488 --- [restartedMain] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2017-05-25 22:01:48.504  INFO 1488 --- [restartedMain] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8500 (http)
+2017-05-25 22:01:48.509  INFO 1488 --- [restartedMain] c.k.r.a.k.KeepTrackApiApplication        : Started KeepTrackApiApplication in 4.05 seconds (JVM running for 5.088)
+2017-05-25 22:02:57.600  INFO 1488 --- [http-nio-8500-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2017-05-25 22:02:57.601  INFO 1488 --- [http-nio-8500-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization started
+2017-05-25 22:02:57.621  INFO 1488 --- [http-nio-8500-exec-1] o.s.web.servlet.DispatcherServlet        : FrameworkServlet 'dispatcherServlet': initialization completed in 16 ms
