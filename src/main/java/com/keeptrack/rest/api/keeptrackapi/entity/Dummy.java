@@ -4,11 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-/**
- * Created by Ria on 5/28/2017.
- */
 @Entity(name = "DUMMY")
-public class dummy {
+public class Dummy {
     @Id
     @Column (name = "d_id")
     private String id;
@@ -16,6 +13,19 @@ public class dummy {
     @Column (name = "d_name")
     private String name;
 
+    public String getId() {
+        return id;
+    }
 
+    public void setId(String id) {
+        this.id = id;
+    }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
