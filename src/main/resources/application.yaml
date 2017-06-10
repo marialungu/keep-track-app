@@ -11,7 +11,7 @@ spring:
       max-idle: 2
       min-idle: 2
   jpa:
-    generate-ddl: false
+    generate-ddl: true
 ---
 spring:
   profiles: h2
@@ -23,7 +23,7 @@ spring:
         dialect: org.hibernate.dialect.H2Dialect
         cache:
         use_second_level_cache: false
-        hbm2ddl.auto: none
+        hbm2ddl.auto: create
     hibernate:
       ddl-auto: validate
   datasource:
