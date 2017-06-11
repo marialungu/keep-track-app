@@ -23,7 +23,7 @@ public class Note {
     private Date noteCreatedAt;
 
     @Column (name = "n_b_id", insertable = false, updatable = false)
-    private String boardId;
+    private Long boardId;
 
     @ManyToOne (cascade = CascadeType.ALL)
     @JoinColumn(name ="n_b_id")
@@ -70,18 +70,20 @@ public class Note {
         this.noteCreatedAt = noteCreatedAt;
     }
 
-    public String getBoardId() {
+    public Long getBoardId() {
         return boardId;
     }
 
-    public void setBoardId(String boardId) {
+    public void setBoardId(Long boardId) {
         this.boardId = boardId;
     }
 
-    public Board getBoard() {        return board;
+    public Board getBoard() {
+        return board;
     }
 
     public void setBoard(Board board) {
         this.board = board;
+        this.boardId = board.getBoardId();
     }
 }

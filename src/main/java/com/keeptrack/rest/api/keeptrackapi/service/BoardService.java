@@ -3,6 +3,7 @@ package com.keeptrack.rest.api.keeptrackapi.service;
 import com.keeptrack.rest.api.keeptrackapi.entity.Board;
 import com.keeptrack.rest.api.keeptrackapi.repository.BoardRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -31,6 +32,7 @@ public class BoardService {
     }
 
     public List<Board> getAllBoard(){
-        return boardRepo.findAll();
+
+        return boardRepo.findAll(new Sort(Sort.Direction.DESC,"boardId"));
     }
 }

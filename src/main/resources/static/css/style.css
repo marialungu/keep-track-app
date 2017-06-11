@@ -17,9 +17,14 @@ ul {
 }
 
 .board-box{
-    height: 25vh;
+    resize: none;
+    width: 100%;
+    height: auto;
+    min-height: 25vh;
     background-color: #80aaff; /* default color */
     border-bottom: 2px solid #cbcee7;
+    margin-bottom: 2%;
+    margin-top: 2%;
 }
 
 .board-name{
@@ -33,7 +38,9 @@ ul {
 .note-excerpt{
     height:5vh;
     width: 90%;
-    margin: 0 auto;
+    margin-bottom: 2%;
+    margin-left: auto;
+    margin-right: auto;
     background-color: white;
     border-bottom: 2px solid #f2f2f2;
 }
@@ -165,4 +172,6 @@ nav ul,nav li {
 .navbar-header a{
     color: #808080; !important;
 }
+
+
 

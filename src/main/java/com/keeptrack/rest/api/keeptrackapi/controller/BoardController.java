@@ -33,7 +33,7 @@ public class BoardController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/add-new-board",method = RequestMethod.POST)
+    @RequestMapping(value = "/add-new-board", method = RequestMethod.POST)
     public void addBoardsViaAjax(@RequestBody BoardDto boardData) {
 
         boardService.createNewBoard(boardData.getBoardName(), boardData.getBoardColor());

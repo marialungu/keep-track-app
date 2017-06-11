@@ -51,8 +51,17 @@
                             <th:block th:object="${item.notes}">
                                 <ul>
                                     <li th:each="noteItem, stat : ${item.notes}">
-                                        <div class="note-excerpt">
+                                        <div id="show-note" class="note-excerpt" th:onclick="'showNote(\'' + ${noteItem.noteId} + '\');'">
                                             <div class="note-title" th:text="${noteItem.noteName}"></div>
+                                        </div>
+                                        <div th:id="'note-' + ${noteItem.noteId}" style="display: none">
+                                            <div id="shown-note" class="show-note">
+                                                <div class="note-title" th:text="${noteItem.noteName}"></div>
+                                                <div  th:id="'note-content-' + ${noteItem.noteId}">
+
+                                                </div>
+                                                <input type="hidden" th:id="'note-content-json-' + ${noteItem.noteId}" th:value="${noteItem.noteContent}"/>
+                                            </div>
                                         </div>
                                     </li>
                                 </ul>
@@ -64,6 +73,7 @@
         </ul>
     </div>
 </div>
+
 <div class="new-board-popup" id="add-board" style="display: none">
     <div class="set-board-name">
         Name:
@@ -71,7 +81,12 @@
     </div>
     <div class="choose-board-color">
         Choose board color:
-        <input id="new-board-color" name="boardColor" type="text"/>
+        <th:block th:object="${board}">
+            <select id="select-board" >
+                <option value="" th:text="'select board ...'"></option>
+                <option th:each="item : ${board}" th:value="${item.boardId}"  th:text="${item.boardName}"></option>
+            </select>
+        </th:block>
     </div>
 
     <div class="save-board" id="save-board" onclick="addNewBoardAjax();">
@@ -79,7 +94,34 @@
     </div>
 </div>
 
-<script>
+<div class="new-note-popup" id="add-note" style="display: none">
+    <div class="set-note-name">
+        Name:
+        <input id="new-note-title" name="noteName" type="text"/>
+    </div>
+    <div class="choose-board">
+        Choose Board:
+        <th:block th:object="${board}">
+            <select id="select-board-for-note" >
+                <option value="" th:text="'select board ...'"></option>
+                <option th:each="item : ${board}" th:value="${item.boardId}"  th:text="${item.boardName}"></option>
+            </select>
+        </th:block>
+    </div>
+    <div class="note-items">
+        <div class="note-item">
+            <input class="note-item-checkbox" type="checkbox" name="noteItem" value=""/>
+            <input class="note-item-text" name="noteItemText" type="text"/>
+        </div>
+    </div>
+    <div class="add-more-items" onclick="addMoreItems();">+</div>
+    <div class="save-note" id="save-note" onclick="addNewNoteAjax();">
+        <input type="button" name="saveNote" value="save"/>
+    </div>
+</div>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
     jQuery(document).ready(function($) {
 
     });
@@ -92,28 +134,131 @@
         $("#add-note").dialog();
     }
 
+    function addMoreItems() {
+        var template = '<div class="note-item"> <input class="note-item-checkbox" type="checkbox" name="noteItem" value=""/> <input class="note-item-text" name="noteItemText" type="text"/> </div>';
+        $(".note-items").append(template);
+        
+    }
+
+    function showNote(Id) {
+        var items = JSON.parse($('#note-content-json-'+Id).val());
+        $(items).each(function(ix, el){
+            var isChecked=el.checked?'checked="checked"':"";
+            var content = '<div id="note-item-display-'+Id+'-'+el.id+'" ><input onchange="updateNoteItems('+Id+');" type="checkbox" id="checkbox-for'+Id+'-'+el.id+'" '+isChecked+' /> <span>'+el.text+'</span> </div>';
+            $('#note-content-'+Id).append(content);
+        });
+        $("#note-" + Id).dialog();
+    }
+    
     function addNewBoardAjax() {
         var data = {boardName: $("#new-board-name").val(), boardColor:$("#new-board-color").val()};
 
         $.ajax({
             type : "POST",
-            contentType : "application/json",
             url : "http://localhost:8501/add-new-board",
+            contentType: "application/json",
             data : JSON.stringify(data),
             dataType : 'json',
             timeout : 100000,
             success : function(data) {
                 console.log("SUCCESS: ", data);
-                $("#add-board").close();
+                $("#add-board").dialog('close');
+                window.location.href="/keep-track";
             },
             error : function(e) {
                 console.log("ERROR: ", e);
+                $("#add-board").dialog('close');
+                window.location.href="/keep-track";
+            },
+            done : function(e) {
+                console.log("DONE");
+                $("#add-board").dialog('close');
+                window.location.href="/keep-track";
+            }
+        });
+    }
+
+    function updateNoteItems(Id){
+        var noteItems = [];
+
+        var items = JSON.parse($('#note-content-json-'+Id).val());
+        $(items).each(function(ix,element){
+            var checkbox=element.checked;
+            $('#checkbox-for'+Id+'-'+element.id).each(function (iix,checkboxInput) {
+                checkbox = checkboxInput.checked;
+            });
+
+            var noteItem = {text:element.text, checked: checkbox,id:element.id};
+            noteItems.push(noteItem);
+        });
+        console.log(noteItems);
+
+        var data = {noteId:Id, noteContent: JSON.stringify(noteItems)};
+        $.ajax({
+            type : "POST",
+            url : "http://localhost:8501/update-note",
+            contentType: "application/json",
+            data : JSON.stringify(data),
+            dataType : 'json',
+            timeout : 100000,
+            success : function(data) {
+                console.log("SUCCESS: ", data);
+            },
+            error : function(e) {
+                console.log("ERROR: ", e);
+
             },
             done : function(e) {
                 console.log("DONE");
             }
         });
     }
+
+    function addNewNoteAjax() {
+        var noteItems = [];
+        var itemIndex = 0;
+        $(".note-item").each(function(ix,element){
+            var checkbox=false, text="";
+            $(element).children('.note-item-checkbox').each(function (iix,checkboxInput) {
+                checkbox = checkboxInput.checked;
+            });
+            $(element).children('.note-item-text').each(function (iiix,textInput) {
+                text = $(textInput).val();
+            });
+           if (text != ''){
+               var noteItem = {text:text, checked: checkbox,id:++itemIndex};
+               noteItems.push(noteItem);
+           }
+        });
+        console.log(noteItems);
+
+        var data = {noteName: $("#new-note-title").val(), boardId: $("#select-board-for-note").val(), noteContent: JSON.stringify(noteItems)};
+
+        $.ajax({
+            type : "POST",
+            url : "http://localhost:8501/add-new-note",
+            contentType: "application/json",
+            data : JSON.stringify(data),
+            dataType : 'json',
+            timeout : 100000,
+            success : function(data) {
+                console.log("SUCCESS: ", data);
+                $("#add-note").dialog('close');
+                window.location.href="/keep-track";
+            },
+            error : function(e) {
+                console.log("ERROR: ", e);
+                $("#add-note").dialog('close');
+                window.location.href="/keep-track";
+            },
+            done : function(e) {
+                console.log("DONE");
+                $("#add-note").dialog('close');
+                window.location.href="/keep-track";
+            }
+        });
+    }
+    /*]]>*/
 </script>
 </body>
 </html>
