@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"></meta>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/style.css"></link>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato"></link>
+    <title>Title</title>
+</head>
+<body>
+<p class="dummy-class" th:text="'Hello, sweet child o mine!'" />
+
+
+<!--<div th:if="${dummy != null}">
+    <h1>Result</h1>
+    <ul>
+        <th:block th:object="${dummy}">
+            <li th:each="item, stat : ${dummy}" th:text="${item.name}">Item description here...</li>
+        </th:block>
+    </ul>
+</div>-->
+
+<script>
+    jQuery(document).ready(function($) {
+        $("#add-new-board").submit(function(event) {
+
+            // Prevent the form from submitting via the browser.
+            event.preventDefault();
+            addNewBoardAjax();
+
+        });
+    });
+
+    function addNewBoardAjax() {
+        var data = {boardName: "work", boardColor:"red"};
+
+        $.ajax({
+            type : "POST",
+            contentType : "application/json",
+            url : "http://localhost:8501/add-new-board",
+            data : JSON.stringify(data),
+            dataType : 'json',
+            timeout : 100000,
+            success : function(data) {
+                console.log("SUCCESS: ", data);
+            },
+            error : function(e) {
+                console.log("ERROR: ", e);
+            },
+            done : function(e) {
+                console.log("DONE");
+            }
+        });
+    }
+</script>
+</body>
+</html>
