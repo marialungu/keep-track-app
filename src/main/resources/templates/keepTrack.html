@@ -16,8 +16,51 @@
     <title>Title</title>
 </head>
 <body>
-<p class="dummy-class" th:text="'Hello, sweet child o mine!'" />
-
+<nav class="nav-primary hidden-xs nav-vertical main-menu" role="navigation" id="nav">
+    <ul data-spy="affix" class="nav affix-top">
+        <li class="side-menu">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">Keep Track</a>
+            </div>
+        </li>
+        <li class="side-menu">
+            <div id="add-new-board">
+                <i class="fa glyphicon glyphicon-plus side-menu-text"></i>
+                <span class="nav-text"> Add new board</span>
+            </div>
+        </li>
+        <li class="side-menu">
+            <div id="add-new-note">
+                <i class="fa glyphicon glyphicon-plus side-menu-text"></i>
+                <span class="nav-text"> Add new note </span>
+            </div>
+        </li>
+    </ul>
+</nav>
+<div class="container-fluid" style="padding-left: 10%;">
+    <div th:if="${board != null}">
+        <ul>
+            <th:block th:object="${board}">
+                <li th:each="item, stat : ${board}" class="col-md-4">
+                    <div class="board-box" th:if="${item.boardColor != null}" th:style="'background-color:' + ${item.boardColor} + ''">
+                        <div class="board-name" th:text="${item.boardName}"></div>
+                        <div th:if="${item.notes != null}">
+                            <th:block th:object="${item.notes}">
+                                <ul>
+                                    <li th:each="noteItem, stat : ${item.notes}">
+                                        <div class="note-excerpt">
+                                            <div class="note-title" th:text="${noteItem.noteName}"></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </th:block>
+                        </div>
+                    </div>
+                </li>
+            </th:block>
+        </ul>
+    </div>
+</div>
 
 <!--<div th:if="${dummy != null}">
     <h1>Result</h1>
