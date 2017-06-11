@@ -7,7 +7,8 @@ import java.util.Date;
 public class Note {
     @Id
     @Column (name = "n_id")
-    private String noteId;
+    @GeneratedValue
+    private Long noteId;
 
     @Column (name = "n_name")
     private String noteName;
@@ -29,11 +30,11 @@ public class Note {
     private Board board;
 
 
-    public String getNoteId() {
+    public Long getNoteId() {
         return noteId;
     }
 
-    public void setNoteId(String noteId) {
+    public void setNoteId(Long noteId) {
         this.noteId = noteId;
     }
 

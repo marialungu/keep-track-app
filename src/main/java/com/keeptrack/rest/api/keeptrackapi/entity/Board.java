@@ -1,9 +1,6 @@
 package com.keeptrack.rest.api.keeptrackapi.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -11,7 +8,8 @@ import java.util.List;
 public class Board {
     @Id
     @Column (name = "b_id")
-    private String boardId;
+    @GeneratedValue
+    private Long boardId;
 
     @Column (name = "b_name")
     private String boardName;
@@ -28,11 +26,11 @@ public class Board {
     @OneToMany(mappedBy = "boardId")
     private List<Note> notes;
 
-    public String getBoardId() {
+    public Long getBoardId() {
         return boardId;
     }
 
-    public void setBoardId(String boardId) {
+    public void setBoardId(Long boardId) {
         this.boardId = boardId;
     }
 

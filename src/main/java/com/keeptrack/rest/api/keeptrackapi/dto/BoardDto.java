@@ -7,6 +7,8 @@ public class BoardDto {
     private String boardName;
     private String boardColor;
 
+    BoardDto(){
+    }
     public BoardDto(String boardName, String boardColor){
         this.boardName = boardName;
         this.boardColor = boardColor;

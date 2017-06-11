@@ -18,7 +18,6 @@ public class BoardService {
 
     public void createNewBoard(String boardName, String boardColor){
         Board newBoard = new Board();
-
         newBoard.setBoardColor(boardColor);
         newBoard.setBoardName(boardName);
         newBoard.setBoardCreatedAt(new Date());

@@ -11,6 +11,9 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"></link>
     <link rel="stylesheet" type="text/css" href="/css/style.css"></link>
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato"></link>
     <title>Title</title>
@@ -24,13 +27,13 @@
             </div>
         </li>
         <li class="side-menu">
-            <div id="add-new-board">
+            <div id="add-new-board" onclick="showNewBoardPopup();">
                 <i class="fa glyphicon glyphicon-plus side-menu-text"></i>
                 <span class="nav-text"> Add new board</span>
             </div>
         </li>
         <li class="side-menu">
-            <div id="add-new-note">
+            <div id="add-new-note" onclick="showNewNotePopup();">
                 <i class="fa glyphicon glyphicon-plus side-menu-text"></i>
                 <span class="nav-text"> Add new note </span>
             </div>
@@ -61,29 +64,36 @@
         </ul>
     </div>
 </div>
+<div class="new-board-popup" id="add-board" style="display: none">
+    <div class="set-board-name">
+        Name:
+        <input id="new-board-name" name="boardName" type="text"/>
+    </div>
+    <div class="choose-board-color">
+        Choose board color:
+        <input id="new-board-color" name="boardColor" type="text"/>
+    </div>
 
-<!--<div th:if="${dummy != null}">
-    <h1>Result</h1>
-    <ul>
-        <th:block th:object="${dummy}">
-            <li th:each="item, stat : ${dummy}" th:text="${item.name}">Item description here...</li>
-        </th:block>
-    </ul>
-</div>-->
+    <div class="save-board" id="save-board" onclick="addNewBoardAjax();">
+        <input type="button" name="saveBoard" value="save"/>
+    </div>
+</div>
 
 <script>
     jQuery(document).ready(function($) {
-        $("#add-new-board").submit(function(event) {
 
-            // Prevent the form from submitting via the browser.
-            event.preventDefault();
-            addNewBoardAjax();
-
-        });
     });
 
+    function showNewBoardPopup() {
+        $("#add-board").dialog();
+    }
+
+    function showNewNotePopup() {
+        $("#add-note").dialog();
+    }
+
     function addNewBoardAjax() {
-        var data = {boardName: "work", boardColor:"red"};
+        var data = {boardName: $("#new-board-name").val(), boardColor:$("#new-board-color").val()};
 
         $.ajax({
             type : "POST",
@@ -94,6 +104,7 @@
             timeout : 100000,
             success : function(data) {
                 console.log("SUCCESS: ", data);
+                $("#add-board").close();
             },
             error : function(e) {
                 console.log("ERROR: ", e);
