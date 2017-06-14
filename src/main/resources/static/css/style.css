@@ -53,24 +53,23 @@ ul {
 
 .side-menu-text{
     color: #808080;
-/* margin-left: 33.33%;
- margin-bottom: 5%;*/
- margin-top: 20%;
+    margin-top: 20%;
 }
 
 .fa {
     position: relative;
     display: block;
-    width: 60px;
-    height: 13px;
+    width: 25%;
+    height: 25%;
     text-align: center;
     vertical-align: middle;
     font-size: 1.7em;
+    margin-left: 15%;
 }
 
 .main-menu {
+    border-right: 2px solid #dcdeef;
     background:  #eeeff7;
-    border-right:transparent;
     position:absolute;
     bottom:0;
     height:100%;
@@ -91,7 +90,7 @@ ul {
     position:relative;
     display:block;
     width:100%;
-    text-align: center;
+    text-align: right;
 }
 
 .main-menu li>a {
@@ -124,7 +123,9 @@ ul {
     width: 100%;
     text-align: center;
     color: #808080;
-    font-size: 15px;
+    font-size: 16px;
+    margin-top: -11%;
+    margin-left: 24%;
 }
 
 .no-touch .scrollable.hover {
@@ -154,11 +155,11 @@ nav ul,nav li {
     padding:0;
 }
 .main-menu li:hover>a, nav.main-menu li.active>a,.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus,.dropdown-menu>.active>a,.dropdown-menu>.active>a:hover,.dropdown-menu>.active>a:focus,.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,.dashboard-page nav.dashboard-menu ul li.active a {
-    color:#1F017D;
+    color:#333;
 }
 
 .glyphicon:hover{
-    color: #1F017D;
+    color: #333;
 }
 .icon-side-menu{
     width: 35%;
@@ -168,10 +169,12 @@ nav ul,nav li {
 
 .navbar-brand{
     font-size: 24px;!important;
+    margin-top: 7%;!important;
 }
 .navbar-header a{
     color: #808080; !important;
 }
+
 
 
 

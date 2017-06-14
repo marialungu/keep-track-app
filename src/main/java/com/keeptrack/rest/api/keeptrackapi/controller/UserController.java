@@ -13,6 +13,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    //nice to have
     @RequestMapping("/login")
     public ModelAndView authenticationPage(Long... a){
 

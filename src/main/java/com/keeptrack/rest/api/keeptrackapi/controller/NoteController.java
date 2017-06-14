@@ -33,6 +33,7 @@ public class NoteController {
         noteService.updateNote(noteUpdateDto.getNoteId(), noteUpdateDto.getNoteContent());
     }
 
+    //nice to have
     @RequestMapping("/delete-note")
     public ModelAndView deleteNote(Long... a){
 
@@ -41,6 +42,7 @@ public class NoteController {
         return model;
     }
 
+    //nice to have
     @RequestMapping("/check-note-item")
     public ModelAndView checkNoteItem(Long... a){
 

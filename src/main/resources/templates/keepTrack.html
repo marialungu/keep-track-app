@@ -27,15 +27,15 @@
             </div>
         </li>
         <li class="side-menu">
-            <div id="add-new-board" onclick="showNewBoardPopup();">
-                <i class="fa glyphicon glyphicon-plus side-menu-text"></i>
-                <span class="nav-text"> Add new board</span>
+            <div id="add-new-board" onclick="showNewBoardPopup();" class="row">
+                <i class="fa glyphicon glyphicon-plus side-menu-text col-md-3"></i>
+                <div class="nav-text col-md-9"> Add new board</div>
             </div>
         </li>
         <li class="side-menu">
-            <div id="add-new-note" onclick="showNewNotePopup();">
-                <i class="fa glyphicon glyphicon-plus side-menu-text"></i>
-                <span class="nav-text"> Add new note </span>
+            <div id="add-new-note" onclick="showNewNotePopup();" class="row">
+                <i class="fa glyphicon glyphicon-plus side-menu-text col-md-3"></i>
+                <div class="nav-text col-md-9"> Add new note </div>
             </div>
         </li>
     </ul>
@@ -81,12 +81,14 @@
     </div>
     <div class="choose-board-color">
         Choose board color:
-        <th:block th:object="${board}">
-            <select id="select-board" >
-                <option value="" th:text="'select board ...'"></option>
-                <option th:each="item : ${board}" th:value="${item.boardId}"  th:text="${item.boardName}"></option>
-            </select>
-        </th:block>
+        <select id="select-color" >
+            <option value="" th:text="'select color ...'"></option>
+            <option>pink</option>
+            <option>bisque</option>
+            <option>indianred</option>
+            <option>lightcoral</option>
+            <option>mediumslateblue</option>
+        </select>
     </div>
 
     <div class="save-board" id="save-board" onclick="addNewBoardAjax();">
@@ -114,7 +116,7 @@
             <input class="note-item-text" name="noteItemText" type="text"/>
         </div>
     </div>
-    <div class="add-more-items" onclick="addMoreItems();">+</div>
+    <div class="btn btn-default add-more-items" onclick="addMoreItems();">+</div>
     <div class="save-note" id="save-note" onclick="addNewNoteAjax();">
         <input type="button" name="saveNote" value="save"/>
     </div>
@@ -151,7 +153,7 @@
     }
     
     function addNewBoardAjax() {
-        var data = {boardName: $("#new-board-name").val(), boardColor:$("#new-board-color").val()};
+        var data = {boardName: $("#new-board-name").val(), boardColor:$("#select-color").val()};
 
         $.ajax({
             type : "POST",

@@ -39,6 +39,7 @@ public class BoardController {
         boardService.createNewBoard(boardData.getBoardName(), boardData.getBoardColor());
     }
 
+    //nice to have
     @RequestMapping("/update-board")
     public ModelAndView updateBoard(Long... a){
 
@@ -47,6 +48,7 @@ public class BoardController {
         return model;
     }
 
+    //nice to have
     @RequestMapping("/delete-board")
     public ModelAndView deleteBoard(Long... a){
 
